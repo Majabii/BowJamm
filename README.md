@@ -50,3 +50,22 @@ public class Bow : MonoBehaviour
         }
     }
 }
+
+
+private float CalculatePull(Vector3 pullPosition)
+    {
+        Vector3 pullDirection = pullPosition - start.position;
+        Vector3 targetDirection = end.position - start.position;
+        float maxLength = targetDirection.magnitude;
+
+        targetDirection.Normalize();
+        float pullValue = Vector3.Dot(pullDirection, targetDirection) / maxLength;
+        return Mathf.Clamp(pullValue, 0, 1);
+    }
+
+    private void UpdateString() 
+    {
+        Vector3 linePosition = Vector3.forward * Mathf.Lerp(start.transform.localPosition.z, end.transform.localPosition.z, pullAmount);
+        notch.transform.localPosition = new Vector3(notch.transform.localPosition.x, notch.transform.localPosition.y, linePosition.z + .2f);
+        _string.SetPosition(1, linePosition);
+    }
