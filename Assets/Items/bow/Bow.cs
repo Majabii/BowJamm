@@ -14,6 +14,7 @@ public class Bow : MonoBehaviour
 
     public InputAction string_pull;
     public InputAction bow_hold;
+    public InputAction switch_hand;
 
     public Transform bow;
     public Transform handle_hand;
@@ -28,16 +29,24 @@ public class Bow : MonoBehaviour
         // Allow the input to be detected
         string_pull.Enable();
         string_pull.performed += String_pull_performed;
-        string_pull.canceled += String_pull_canceled;
+        string_pull.canceled += String_pull_cancelled;
 
         bow_hold.Enable();
         bow_hold.performed += Bow_hold_performed;
-    }
+        bow_hold.canceled += Bow_hold_cancelled;
 
+        switch_hand.Enable();
+    }
 
     // Update is called once per frame
     void Update()
     {
+        if (switch_hand.triggered)
+        {
+            Debug.Log("Hand Switch Attempt");
+            SwitchHand();
+        }
+
         if (bow_is_held)
         {
             MoveBow(handle_hand.position, handle_hand.rotation);
@@ -60,11 +69,17 @@ public class Bow : MonoBehaviour
 
     private void Bow_hold_performed(InputAction.CallbackContext obj)
     {
-        Debug.Log("Bow Hold Triggered");
-        bow_is_held = !bow_is_held;
+        Debug.Log("Bow Hold Start");
+        bow_is_held = true;
+    }
+    private void Bow_hold_cancelled(InputAction.CallbackContext obj)
+    {
+        Debug.Log("Bow Hold End");
+        bow_is_held = false;
     }
 
-    private void String_pull_canceled(InputAction.CallbackContext obj)
+
+    private void String_pull_cancelled(InputAction.CallbackContext obj)
     {
         Debug.Log("String Held Stopped");
         ResetString(attach_top.position, attach_bot.position);
@@ -93,5 +108,35 @@ public class Bow : MonoBehaviour
     void ResetString(Vector3 top, Vector3 bot)
     {
         MoveString(top, (top + bot) / 2, bot);
+    }
+
+    void SwitchHand()
+    {
+        // Swap hand locations
+        Transform tmp = handle_hand;
+        handle_hand = string_hand;
+        string_hand = tmp;
+
+
+        // Swap hotkeys
+        bow_hold.Disable();
+        string_pull.Disable();
+
+        string_pull.performed -= String_pull_performed;
+        string_pull.canceled -= String_pull_cancelled;
+        bow_hold.performed -= Bow_hold_performed;
+        bow_hold.canceled -= Bow_hold_cancelled;
+
+        InputAction tmp2 = bow_hold;
+        bow_hold = string_pull;
+        string_pull = tmp2;
+
+        string_pull.performed += String_pull_performed;
+        string_pull.canceled += String_pull_cancelled;
+        bow_hold.performed += Bow_hold_performed;
+        bow_hold.canceled += Bow_hold_cancelled;
+
+        bow_hold.Enable();
+        string_pull.Enable();
     }
 }
