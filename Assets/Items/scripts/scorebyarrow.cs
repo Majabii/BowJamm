@@ -17,26 +17,31 @@ public class HitDetection : MonoBehaviour
     // Detect when this object collides with another object
     void OnCollisionEnter(Collision collision)
     {
-        // Check the tag of the object that hit
-        if (collision.gameObject.CompareTag("innercercle"))
+        Debug.Log("Arrow hit: " + collision.gameObject.name); // Log the object name
+
+        if (collision.gameObject.CompareTag("geel"))
         {
-            scoreManager.AddScore(30); // Add 30 points for enemy
-            Debug.Log("Hit inner circle! Adding 30 points.");
+            scoreManager.AddScore(10);
+            Debug.Log("Hit inner circle! (geel)");
         }
-        else if (collision.gameObject.CompareTag("2nccircle"))
+        else if (collision.gameObject.CompareTag("rood"))
         {
-            scoreManager.AddScore(20); // Add 20 points for bonus
-            Debug.Log("Hit 2nccircle! Adding 20 points.");
+            scoreManager.AddScore(8);
+            Debug.Log("Hit 2nd circle! (rood)");
         }
-        else if (collision.gameObject.CompareTag("3thcircle"))
+        else if (collision.gameObject.CompareTag("blauw"))
         {
-            scoreManager.AddScore(10); // Add 10 points for obstacle
-            Debug.Log("Hit 3thcircle! Adding 10 points.");
+            scoreManager.AddScore(6);
+            Debug.Log("Hit 3rd circle! (blauw)");
         }
-        else if (collision.gameObject.CompareTag("zombie"))
+        else if (collision.gameObject.CompareTag("zomb"))
         {
-            scoreManager.AddScore(40); // Add 40 points for obstacle
-            Debug.Log("Hit 3thcircle! Adding 40 points.");
+            scoreManager.AddScore(20);
+            Debug.Log("Hit zombie target! (zomb)");
+        }
+        else
+        {
+            Debug.Log("Hit something else: " + collision.gameObject.tag);
         }
     }
 }
