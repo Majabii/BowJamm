@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
+//using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class Bow : MonoBehaviour
 {
@@ -68,6 +68,7 @@ public class Bow : MonoBehaviour
         if (bow_is_held)
         {
             MoveBow(handle_hand.position, handle_hand.rotation);
+
             if (string_is_held)
             {
                 MoveString(attach_top.position, string_hand.position, attach_bot.position);
@@ -80,7 +81,7 @@ public class Bow : MonoBehaviour
                 if (front_distance < string_distance)
                 {
                     drop_arrow();
-                    // TODO FIX
+
                 }
 
                 // haptic feedback
@@ -187,7 +188,6 @@ public class Bow : MonoBehaviour
             ArrowNew arrow_script = arrow.GetComponent<ArrowNew>();
             arrow_script.release();
             arrow = null;
-            ResetString();
         }
     }
 
