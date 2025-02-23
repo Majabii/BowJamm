@@ -22,15 +22,12 @@ public class CurrentPlayer : MonoBehaviour
 
     }
 
-    public void SetPlayerName()
-    {
-        Debug.Log("Setting player name");
-        playerName = "Igor";
-        currentPlayerText.text = "Current player: " + playerName;
-    }
-
     public void addCharacter(string s)
     {
+        if (tempName.Length == 0 || tempName.EndsWith(" "))
+        {
+            s = s.ToUpper();
+        }
         tempName += s;
         newPlayerText.text = tempName;
     }
