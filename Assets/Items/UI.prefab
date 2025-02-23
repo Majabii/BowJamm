@@ -2007,6 +2007,7 @@ GameObject:
   - component: {fileID: 1339283829875618865}
   - component: {fileID: 4224212952095482912}
   - component: {fileID: 8561810370346944388}
+  - component: {fileID: 6074269798114085843}
   m_Layer: 0
   m_Name: Flexible hud
   m_TagString: Untagged
@@ -13994,6 +13995,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4967662572717123178, guid: d034140c0b5ca4d49afd79462b8cdcba, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8561810370346944388}
+    - targetCorrespondingSourceObject: {fileID: 4967662572717123178, guid: d034140c0b5ca4d49afd79462b8cdcba, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6074269798114085843}
   m_SourcePrefab: {fileID: 100100000, guid: d034140c0b5ca4d49afd79462b8cdcba, type: 3}
 --- !u!114 &8561810370346944388
 MonoBehaviour:
@@ -14008,3 +14012,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LeaderboardText: {fileID: 6607731855657937973}
+--- !u!114 &6074269798114085843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886576874392424168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6934ce1e7001f4e0ab4e8b887131246f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 3695533295663909143}
+  bow: {fileID: 0}
+  terrain: {fileID: 0}
+  pauze_button:
+    m_Name: Pauze_button
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 63d8b98b-4a3b-4448-a31f-36be176fe6aa
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: b16c299c-f5fc-41a8-86ff-57b315a24ef2
+      m_Path: <Keyboard>/e
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pauze_button
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 90b117e6-ddf8-4cee-ae5a-ba9ea8b2ba0f
+      m_Path: 
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pauze_button
+      m_Flags: 0
+    m_Flags: 0
