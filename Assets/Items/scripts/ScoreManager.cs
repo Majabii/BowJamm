@@ -12,6 +12,7 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
+        leaderboard = FindObjectOfType<Leaderboard>();
         if (scoreText == null) // Check if scoreText is missing
         {
             Debug.LogError("ScoreText is not assigned in the Inspector!");

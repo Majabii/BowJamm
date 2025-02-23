@@ -41,6 +41,7 @@ public class Bow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        triggerDescription = FindObjectOfType<TriggerDescription>();
         // Allow the input to be detected
         string_pull.Enable();
         string_pull.performed += String_pull_performed;
