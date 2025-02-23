@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Anchor
+  - geel
+  - rood
+  - blauw
+  - zwart
+  - Arrow
+  - zomb
+  - Zombie
+  - DeathBarrier
   layers:
   - Default
   - TransparentFX
