@@ -186,6 +186,7 @@ MonoBehaviour:
   bow: {fileID: 8455738473644858259}
   handle_hand: {fileID: 0}
   string_hand: {fileID: 0}
+  arrowPrefab: {fileID: 2533080002528655198, guid: a99012eb54f37aa4ebff4e4e4a4ca8fc, type: 3}
 --- !u!1 &4905837812832411567
 GameObject:
   m_ObjectHideFlags: 0

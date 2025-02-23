@@ -20,8 +20,12 @@ public class Bow : MonoBehaviour
     public Transform handle_hand;
     public Transform string_hand;
 
+    public GameObject arrowPrefab;
+    private GameObject arrow;
+
     private bool string_is_held = false;
     private bool bow_is_held = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +47,7 @@ public class Bow : MonoBehaviour
     {
         if (switch_hand.triggered)
         {
-            Debug.Log("Hand Switch Attempt");
+            Debug.Log("Hand Switch");
             SwitchHand();
         }
 
@@ -82,15 +86,41 @@ public class Bow : MonoBehaviour
     private void String_pull_cancelled(InputAction.CallbackContext obj)
     {
         Debug.Log("String Held Stopped");
-        ResetString(attach_top.position, attach_bot.position);
-        // fire
-        string_is_held = false;
+
+        if (bow_is_held & string_is_held)
+        {
+            // fire
+            Fire_arrow();
+
+            ResetString(attach_top.position, attach_bot.position);
+            string_is_held = false;
+            arrow = null;
+        }
     }
 
     private void String_pull_performed(InputAction.CallbackContext obj)
     {
         Debug.Log("String Held Started");
-        string_is_held = true;
+
+        if (bow_is_held)
+        {
+            if (!string_is_held)
+            {
+                string_is_held = true;
+                arrow = Instantiate(arrowPrefab, string_hand.position, string_hand.rotation);
+                Debug.Log("Instantiated Arrow");
+            }
+        }
+    }
+
+    void Fire_arrow()
+    {
+        ArrowNew arrow_script = arrow.GetComponent<ArrowNew>();
+        arrow_script.release();
+
+        Rigidbody rb = arrow.GetComponent<Rigidbody>();
+        Vector3 arrow_direction = handle_hand.position - string_hand.position;
+        rb.AddForce(arrow_direction * 0.05f, ForceMode.Impulse);
     }
 
     void MoveBow(Vector3 pos, Quaternion rot)
