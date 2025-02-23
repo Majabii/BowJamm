@@ -32,6 +32,7 @@ public class ScoreManager : MonoBehaviour
         {
             Debug.Log("update board"); // Debug log to check updates
             scoreText.text = "Score: " + score;
+            SaveScore();
         }
     }
 
