@@ -17,7 +17,12 @@ public class ArrowNew : MonoBehaviour
 
         released = true;
     }
-    
+    void OnCollisionEnter(Collision collision)
+    {
+        body.useGravity = false;
+        body.isKinematic = true;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,9 +34,12 @@ public class ArrowNew : MonoBehaviour
     {
         if (released)
         {
-            Vector3 velocity = body.velocity.normalized;
-            Quaternion targetRotation = Quaternion.LookRotation(velocity);
-            transform.rotation = targetRotation;
+            if (body.velocity.magnitude > 0.05f)
+            {
+                Vector3 velocity = body.velocity.normalized;
+                Quaternion targetRotation = Quaternion.LookRotation(velocity);
+                transform.rotation = targetRotation;
+            }
         }
     }
 }

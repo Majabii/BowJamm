@@ -59,7 +59,7 @@ public class Bow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (switch_hand.triggered)
+        if (switch_hand.triggered & !bow_is_held)
         {
             Debug.Log("Hand Switch");
             SwitchHand();
@@ -166,7 +166,7 @@ public class Bow : MonoBehaviour
             float force;
             if (distance > 0.3f)
             {
-                force = 0.25f;
+                force = 0.5f;
             }
             else
             {
