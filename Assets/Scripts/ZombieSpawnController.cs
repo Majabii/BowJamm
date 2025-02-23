@@ -11,10 +11,17 @@ public class ZombieSpawnController : MonoBehaviour
     public Transform[] endSpawnLocations = new Transform[4];
     public int startDelay = 3;
     public int spawnInterval = 5;
-    
+
+    public bool allowed = true;
+
     private struct zombieSpawnLocation
     {
 
+    }
+
+    public void set_allowed()
+    {
+        allowed = true;
     }
 
     // Start is called before the first frame update
@@ -25,7 +32,10 @@ public class ZombieSpawnController : MonoBehaviour
 
     private void SpawnZombie()
     {
-        Instantiate(zombies[zombieIndex - 1], GetSpawnLocation(), zombies[zombieIndex - 1].transform.rotation);
+        if (allowed)
+        {
+            Instantiate(zombies[zombieIndex - 1], GetSpawnLocation(), zombies[zombieIndex - 1].transform.rotation);
+        }
     }
     private Vector3 GetSpawnLocation()
     {

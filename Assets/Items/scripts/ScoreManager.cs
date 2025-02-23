@@ -34,6 +34,10 @@ public class ScoreManager : MonoBehaviour
             scoreText.text = "Score: " + score;
             SaveScore();
         }
+        else
+        {
+            scoreText.text = "aaaaa";
+        }
     }
 
     public void SaveScore()

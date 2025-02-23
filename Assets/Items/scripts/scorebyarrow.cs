@@ -19,24 +19,24 @@ public class HitDetection : MonoBehaviour
     {
         Debug.Log("Arrow hit: " + collision.gameObject.name); // Log the object name
 
-        if (collision.gameObject.CompareTag("geel"))
+        //if (collision.gameObject.CompareTag("geel"))
+        //{
+        //    scoreManager.AddScore(10);
+        //    Debug.Log("Hit inner circle! (geel)");
+        //}
+        //else if (collision.gameObject.CompareTag("rood"))
+        //{
+        //    scoreManager.AddScore(8);
+        //    Debug.Log("Hit 2nd circle! (rood)");
+        //}
+        //else if (collision.gameObject.CompareTag("blauw"))
+        //{
+        //    scoreManager.AddScore(6);
+        //    Debug.Log("Hit 3rd circle! (blauw)");
+        //}
+        if (collision.gameObject.CompareTag("zomb"))
         {
-            scoreManager.AddScore(10);
-            Debug.Log("Hit inner circle! (geel)");
-        }
-        else if (collision.gameObject.CompareTag("rood"))
-        {
-            scoreManager.AddScore(8);
-            Debug.Log("Hit 2nd circle! (rood)");
-        }
-        else if (collision.gameObject.CompareTag("blauw"))
-        {
-            scoreManager.AddScore(6);
-            Debug.Log("Hit 3rd circle! (blauw)");
-        }
-        else if (collision.gameObject.CompareTag("zomb"))
-        {
-            scoreManager.AddScore(20);
+            scoreManager.AddScore(1);
             Debug.Log("Hit zombie target! (zomb)");
         }
         else

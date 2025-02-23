@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ArrowNew : MonoBehaviour
 {
@@ -19,8 +20,11 @@ public class ArrowNew : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        body.useGravity = false;
-        body.isKinematic = true;
+        if (!collision.gameObject.CompareTag("DeathBarrier") || !collision.gameObject.CompareTag("Arrow"))
+        {
+            body.useGravity = false;
+            body.isKinematic = true;
+        }
     }
 
     // Start is called before the first frame update
