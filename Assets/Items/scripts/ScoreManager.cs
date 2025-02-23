@@ -11,6 +11,12 @@ public class ScoreManager : MonoBehaviour
     public TMP_Text scoreTextDeath;
     private int score = 0;
 
+    public void resetScore()
+    {
+        score = 0;
+        UpdateScoreUI(); // Set initial score display
+    }
+
     void Start()
     {
         leaderboard = FindObjectOfType<Leaderboard>();

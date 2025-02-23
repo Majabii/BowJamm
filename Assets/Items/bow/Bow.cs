@@ -170,6 +170,9 @@ public class Bow : MonoBehaviour
             if (distance > 0.3f)
             {
                 force = 0.5f;
+
+                AudioSource musicoa = gameObject.GetComponent<AudioSource>();
+                musicoa.Play();
             }
             else
             {
