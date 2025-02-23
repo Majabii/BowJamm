@@ -71,7 +71,7 @@ public class signup : MonoBehaviour
             if (firsttimedown)
             {
                 Debug.Log("Adding score.");
-                FindObjectOfType<ScoreManager>().AddScore(10); // Add 10 points;
+                //FindObjectOfType<ScoreManager>().AddScore(10); // Add 10 points;
                 firsttimedown = false; // Set it to false after adding points
             }
             // Smoothly rotate back to x = -90 in 2 seconds
