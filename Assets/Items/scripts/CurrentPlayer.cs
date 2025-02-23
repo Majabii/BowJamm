@@ -39,4 +39,10 @@ public class CurrentPlayer : MonoBehaviour
         tempName = "";
         newPlayerText.text = tempName;
     }
+
+    public string getPlayerName() 
+    {
+        Debug.Log("Current player: " + playerName);
+        return playerName;
+    }
 }

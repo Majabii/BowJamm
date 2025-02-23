@@ -5,6 +5,7 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
 
+    private Leaderboard leaderboard;  // Reference to the Leaderboard script
 
     public TMP_Text scoreText;
     private int score = 0;
@@ -32,6 +33,11 @@ public class ScoreManager : MonoBehaviour
             Debug.Log("update board"); // Debug log to check updates
             scoreText.text = "Score: " + score;
         }
+    }
+
+    public void SaveScore()
+    {
+        leaderboard.SaveScore(score);
     }
 
 }
