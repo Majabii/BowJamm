@@ -11,6 +11,7 @@ public class Leaderboard : MonoBehaviour
     
     private Dictionary<string, int> scores = new Dictionary<string, int>();
     public TMP_Text LeaderboardText;
+    public TMP_Text highScore;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class Leaderboard : MonoBehaviour
         // scores.Add("Player 4", 100);
         // scores.Add("Player 5", 20);
         // scores.Add("Player 6", 50);
+        currentPlayer = FindObjectOfType<CurrentPlayer>();
         UpdateLeaderboard();
     }
 
@@ -38,6 +40,7 @@ public class Leaderboard : MonoBehaviour
             if (score > scores[currentPlayerName])
             {
                 scores[currentPlayerName] = score;
+                highScore.text = "Highscore: " + score;
             }
         }
         else
