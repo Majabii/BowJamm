@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6189557753418582489}
-  - component: {fileID: 2609342327640008609}
   m_Layer: 0
   m_Name: Tip
   m_TagString: Untagged
@@ -32,33 +31,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6092325862872093385}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &2609342327640008609
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 414621075774611803}
-  serializedVersion: 4
-  m_Mass: 0.007
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &2533080002528655198
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,7 +73,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2533080002528655198}
   serializedVersion: 4
-  m_Mass: 0.001
+  m_Mass: 0.01
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -132,9 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604cce36170fe5e47be4969e740c4b56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tip: {fileID: 2609342327640008609}
-  shaft: {fileID: 5115318613108426485}
-  feathers: {fileID: 3158843035880642061}
+  body: {fileID: 5115318613108426485}
   arrow: {fileID: 2279760586842791968}
 --- !u!1 &5004422250446073141
 GameObject:
@@ -145,7 +115,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8856086425569188544}
-  - component: {fileID: 3158843035880642061}
   m_Layer: 0
   m_Name: Feathers
   m_TagString: Untagged
@@ -168,33 +137,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6092325862872093385}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &3158843035880642061
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5004422250446073141}
-  serializedVersion: 4
-  m_Mass: 0.0001
-  m_Drag: 0.01
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &6267848460223603761
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +162,7 @@ Transform:
   m_GameObject: {fileID: 6267848460223603761}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

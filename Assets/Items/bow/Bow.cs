@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class Bow : MonoBehaviour
 {
@@ -15,10 +16,13 @@ public class Bow : MonoBehaviour
     public InputAction string_pull;
     public InputAction bow_hold;
     public InputAction switch_hand;
+    private bool right_handed = true;
 
     public Transform bow;
     public Transform handle_hand;
     public Transform string_hand;
+    public Transform grab_location;
+    public Transform front_of_bow;
 
     public GameObject arrowPrefab;
     private GameObject arrow;
@@ -26,6 +30,12 @@ public class Bow : MonoBehaviour
     private bool string_is_held = false;
     private bool bow_is_held = false;
 
+    // used for haptic feedback
+    private XRNode leftHandNode = XRNode.LeftHand;
+    private XRNode rightHandNode = XRNode.RightHand;
+
+    private UnityEngine.XR.InputDevice leftHandDevice;
+    private UnityEngine.XR.InputDevice rightHandDevice;
 
     // Start is called before the first frame update
     void Start()
@@ -40,8 +50,12 @@ public class Bow : MonoBehaviour
         bow_hold.canceled += Bow_hold_cancelled;
 
         switch_hand.Enable();
+
+        leftHandDevice = InputDevices.GetDeviceAtXRNode(leftHandNode);
+        rightHandDevice = InputDevices.GetDeviceAtXRNode(rightHandNode);
     }
 
+    
     // Update is called once per frame
     void Update()
     {
@@ -57,10 +71,32 @@ public class Bow : MonoBehaviour
             if (string_is_held)
             {
                 MoveString(attach_top.position, string_hand.position, attach_bot.position);
+                HoldArrow();
+
+                // drop arrow if closer to the front of the bow than the string (and thus scuffed)
+                float front_distance = Vector3.Distance(front_of_bow.position, string_hand.position);
+                float string_distance = Vector3.Distance(grab_location.position, string_hand.position);
+
+                if (front_distance < string_distance)
+                {
+                    drop_arrow();
+                    // TODO FIX
+                }
+
+                // haptic feedback
+                if (string_distance > 1f) { string_distance = 1f; }
+                if (right_handed)
+                {
+                    rightHandDevice.SendHapticImpulse(0, string_distance);
+                }
+                else
+                {
+                    leftHandDevice.SendHapticImpulse(0, string_distance);
+                }
             } 
             else
             {
-                ResetString(attach_top.position, attach_bot.position);
+                ResetString();
             }
         }
 
@@ -76,12 +112,13 @@ public class Bow : MonoBehaviour
         Debug.Log("Bow Hold Start");
         bow_is_held = true;
     }
+
     private void Bow_hold_cancelled(InputAction.CallbackContext obj)
     {
         Debug.Log("Bow Hold End");
         bow_is_held = false;
+        drop_arrow();
     }
-
 
     private void String_pull_cancelled(InputAction.CallbackContext obj)
     {
@@ -89,22 +126,23 @@ public class Bow : MonoBehaviour
 
         if (bow_is_held & string_is_held)
         {
-            // fire
             Fire_arrow();
-
-            ResetString(attach_top.position, attach_bot.position);
-            string_is_held = false;
-            arrow = null;
         }
+        ResetString();
+        string_is_held = false;
     }
 
     private void String_pull_performed(InputAction.CallbackContext obj)
     {
         Debug.Log("String Held Started");
 
-        if (bow_is_held)
+        // try to grab the string (and create an arrow)
+        // only do it if a) you are holding the bow
+        // and b) you are close enough to the grab location
+        if (bow_is_held & !string_is_held)
         {
-            if (!string_is_held)
+            float distance = Vector3.Distance(string_hand.position, grab_location.position);
+            if (distance < 0.1)
             {
                 string_is_held = true;
                 arrow = Instantiate(arrowPrefab, string_hand.position, string_hand.rotation);
@@ -115,12 +153,42 @@ public class Bow : MonoBehaviour
 
     void Fire_arrow()
     {
-        ArrowNew arrow_script = arrow.GetComponent<ArrowNew>();
-        arrow_script.release();
+        if (arrow != null)
+        {
+            ArrowNew arrow_script = arrow.GetComponent<ArrowNew>();
+            arrow_script.release();
 
-        Rigidbody rb = arrow.GetComponent<Rigidbody>();
-        Vector3 arrow_direction = handle_hand.position - string_hand.position;
-        rb.AddForce(arrow_direction * 0.05f, ForceMode.Impulse);
+            Vector3 arrow_direction = handle_hand.position - string_hand.position;
+
+            float distance = Vector3.Distance(handle_hand.position, string_hand.position);
+
+            float force;
+            if (distance > 0.3f)
+            {
+                force = 0.25f;
+            }
+            else
+            {
+                force = 0.1f;
+            }
+
+            arrow_script.body.AddForce(arrow_direction * force, ForceMode.Impulse);
+
+            arrow = null;
+
+            ResetString();
+        }
+    }
+
+    void drop_arrow()
+    {
+        if (arrow != null)
+        {
+            ArrowNew arrow_script = arrow.GetComponent<ArrowNew>();
+            arrow_script.release();
+            arrow = null;
+            ResetString();
+        }
     }
 
     void MoveBow(Vector3 pos, Quaternion rot)
@@ -135,8 +203,10 @@ public class Bow : MonoBehaviour
         string_.SetPosition(2, bot);
     }
 
-    void ResetString(Vector3 top, Vector3 bot)
+    void ResetString()
     {
+        Vector3 top = attach_top.position;
+        Vector3 bot = attach_bot.position;
         MoveString(top, (top + bot) / 2, bot);
     }
 
@@ -168,5 +238,16 @@ public class Bow : MonoBehaviour
 
         bow_hold.Enable();
         string_pull.Enable();
+
+        // update bool
+        right_handed = !right_handed;
+    }
+
+    void HoldArrow()
+    {
+        Transform arrow_position = arrow.GetComponent<Transform>();
+        Vector3 direction = handle_hand.position - string_hand.position;
+        arrow_position.SetPositionAndRotation(string_hand.position, Quaternion.LookRotation(direction));
+        Debug.Log(arrow_position);
     }
 }
