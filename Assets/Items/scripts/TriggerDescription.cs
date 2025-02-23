@@ -30,8 +30,8 @@ public class TriggerDescription : MonoBehaviour
         
     }
 
-    public void SwitchHand() {
-        lefthanded = !lefthanded;
+    public void SwitchHand(bool right_handed) {
+        lefthanded = !right_handed;
         if (lefthanded) {
             leftTriggerText.text = "Arrow";
             rightTriggerText.text = "Draw bow";
