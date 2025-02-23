@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5564543535191219526
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: d8bc4adcb5137d14586bfeaefb807d4c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -50.18785
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8bc4adcb5137d14586bfeaefb807d4c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8bc4adcb5137d14586bfeaefb807d4c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -23.149664
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8bc4adcb5137d14586bfeaefb807d4c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70239764
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8bc4adcb5137d14586bfeaefb807d4c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8bc4adcb5137d14586bfeaefb807d4c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7117848
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8bc4adcb5137d14586bfeaefb807d4c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8bc4adcb5137d14586bfeaefb807d4c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8bc4adcb5137d14586bfeaefb807d4c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90.761
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8bc4adcb5137d14586bfeaefb807d4c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1853094968961178454, guid: d8bc4adcb5137d14586bfeaefb807d4c, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1853094968961178454, guid: d8bc4adcb5137d14586bfeaefb807d4c, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1853094968961178454, guid: d8bc4adcb5137d14586bfeaefb807d4c, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1853094968961178454, guid: d8bc4adcb5137d14586bfeaefb807d4c, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d8bc4adcb5137d14586bfeaefb807d4c, type: 3}
+      propertyPath: m_Name
+      value: base_target3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d8bc4adcb5137d14586bfeaefb807d4c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3372993850158793391}
+  m_SourcePrefab: {fileID: 100100000, guid: d8bc4adcb5137d14586bfeaefb807d4c, type: 3}
+--- !u!1 &4753640722329624599 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d8bc4adcb5137d14586bfeaefb807d4c, type: 3}
+  m_PrefabInstance: {fileID: 5564543535191219526}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3372993850158793391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4753640722329624599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e11d8cadaf7d8b9449815b07c36dd906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationDuration: 2
+  timeBeforeGoingDown: 4

@@ -26,7 +26,7 @@ public class signup : MonoBehaviour
         SetRandomWaitTime();
         Debug.Log($"The sign will pop up after {randomWaitTime} seconds.");
         // Set the initial rotation of the sign
-        transform.rotation = Quaternion.Euler(startRotationX, 0f, 0f);
+        transform.rotation = Quaternion.Euler(startRotationX, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
     }
 
     void Update()
@@ -48,7 +48,7 @@ public class signup : MonoBehaviour
         {
             // Calculate rotation between the current position (-90) and the up position (0) over the specified duration
             float rotationX = Mathf.Lerp(startRotationX, popUpRotationX, elapsedTime / rotationDuration);
-            transform.rotation = Quaternion.Euler(rotationX, 0f, 0f);
+            transform.rotation = Quaternion.Euler(rotationX, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
 
             // Log the current rotation progress
             Debug.Log($"Rotating sign: X = {rotationX}");
@@ -70,14 +70,13 @@ public class signup : MonoBehaviour
             Debug.Log($"{firsttimedown}");
             if (firsttimedown)
             {
-                Debug.Log("Adding score.");
-                FindObjectOfType<ScoreManager>().AddScore(10); // Add 10 points;
+                Debug.Log("First time down");
+                //FindObjectOfType<ScoreManager>().AddScore(10); // Add 10 points;
                 firsttimedown = false; // Set it to false after adding points
             }
             // Smoothly rotate back to x = -90 in 2 seconds
             float rotationX = Mathf.Lerp(popUpRotationX, startRotationX, (elapsedTime - timeBeforeGoingDown) / rotationDuration);
-            transform.rotation = Quaternion.Euler(rotationX, 0f, 0f);
-
+            transform.rotation = Quaternion.Euler(rotationX, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
             // Log the current rotation progress while going down
             Debug.Log($"Rotating back down: X = {rotationX}");
 
