@@ -17,6 +17,7 @@ public class Bow : MonoBehaviour
     public InputAction bow_hold;
     public InputAction switch_hand;
     private bool right_handed = true;
+    private TriggerDescription triggerDescription;
 
     public Transform bow;
     public Transform handle_hand;
@@ -53,6 +54,7 @@ public class Bow : MonoBehaviour
 
         leftHandDevice = InputDevices.GetDeviceAtXRNode(leftHandNode);
         rightHandDevice = InputDevices.GetDeviceAtXRNode(rightHandNode);
+        triggerDescription.SwitchHand(right_handed);
     }
 
     
@@ -241,6 +243,7 @@ public class Bow : MonoBehaviour
 
         // update bool
         right_handed = !right_handed;
+        triggerDescription.SwitchHand(right_handed);
     }
 
     void HoldArrow()
