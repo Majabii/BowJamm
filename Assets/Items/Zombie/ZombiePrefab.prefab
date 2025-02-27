@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2e464951492f63b49810ae04c870ddef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.968813
+      value: 21.98677
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e464951492f63b49810ae04c870ddef, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18,11 +18,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e464951492f63b49810ae04c870ddef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.87907
+      value: 16.87515
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e464951492f63b49810ae04c870ddef, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.37842456
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e464951492f63b49810ae04c870ddef, type: 3}
       propertyPath: m_LocalRotation.x
@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e464951492f63b49810ae04c870ddef, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.9256322
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e464951492f63b49810ae04c870ddef, type: 3}
       propertyPath: m_LocalRotation.z
@@ -42,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e464951492f63b49810ae04c870ddef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 135.528
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e464951492f63b49810ae04c870ddef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -111,7 +111,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 1
+  m_Speed: 0.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
